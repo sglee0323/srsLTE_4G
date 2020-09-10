@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sugi/srsLTE/lib/test/common/stack_procedure_test.cc
+srslte/common/stack_procedure.h
+/home/sugi/srsLTE/lib/test/common/srslte/common/stack_procedure.h
+iostream
+-
+
+/usr/local/include/srslte/common/stack_procedure.h
+functional
+-
+list
+-
+memory
+-
+mutex
+-
+

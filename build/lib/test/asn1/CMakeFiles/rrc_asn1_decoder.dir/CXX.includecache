@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sugi/srsLTE/lib/test/asn1/rrc_asn1_decoder.cc
+getopt.h
+-
+iostream
+-
+srslte/asn1/asn1_utils.h
+/home/sugi/srsLTE/lib/test/asn1/srslte/asn1/asn1_utils.h
+srslte/asn1/rrc_asn1.h
+/home/sugi/srsLTE/lib/test/asn1/srslte/asn1/rrc_asn1.h
+
+/usr/local/include/srslte/asn1/asn1_utils.h
+algorithm
+-
+array
+-
+cmath
+-
+cstring
+-
+sstream
+-
+stdarg.h
+-
+stdint.h
+-
+string
+-
+
+/usr/local/include/srslte/asn1/rrc_asn1.h
+asn1_utils.h
+/usr/local/include/srslte/asn1/asn1_utils.h
+cstdio
+-
+stdarg.h
+-
+

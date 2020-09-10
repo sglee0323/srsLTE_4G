@@ -1,0 +1,27 @@
+--- command='srsenb' version=20.04.1 signal=11 date='10/09/2020 00:50:29' ---
+	srsenb(+0x121773) [0x55af730df773]
+	/lib/x86_64-linux-gnu/libc.so.6(+0x3efd0) [0x7f2ea09aafd0]
+	srsenb(+0x79e00) [0x55af73037e00]
+	srsenb(+0x1337e9) [0x55af730f17e9]
+	srsenb(+0x58fee) [0x55af73016fee]
+	/lib/x86_64-linux-gnu/libpthread.so.0(+0x76db) [0x7f2ea28b96db]
+	/lib/x86_64-linux-gnu/libc.so.6(clone+0x3f) [0x7f2ea0a8da3f]
+
+--- command='srsenb' version=20.04.1 signal=11 date='10/09/2020 00:50:29' ---
+	srsenb(+0x121773) [0x55af730df773]
+	/lib/x86_64-linux-gnu/libc.so.6(+0x3efd0) [0x7f2ea09aafd0]
+	srsenb(+0x79e00) [0x55af73037e00]
+	srsenb(+0x1337e9) [0x55af730f17e9]
+	srsenb(+0x58fee) [0x55af73016fee]
+	/lib/x86_64-linux-gnu/libpthread.so.0(+0x76db) [0x7f2ea28b96db]
+	/lib/x86_64-linux-gnu/libc.so.6(clone+0x3f) [0x7f2ea0a8da3f]
+
+--- command='srsenb' version=20.04.1 signal=11 date='10/09/2020 00:50:29' ---
+	srsenb(+0x121773) [0x55af730df773]
+	/lib/x86_64-linux-gnu/libc.so.6(+0x3efd0) [0x7f2ea09aafd0]
+	srsenb(+0x79e00) [0x55af73037e00]
+	srsenb(+0x1337e9) [0x55af730f17e9]
+	srsenb(+0x58fee) [0x55af73016fee]
+	/lib/x86_64-linux-gnu/libpthread.so.0(+0x76db) [0x7f2ea28b96db]
+	/lib/x86_64-linux-gnu/libc.so.6(clone+0x3f) [0x7f2ea0a8da3f]
+

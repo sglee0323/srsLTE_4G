@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sugi/srsLTE/lib/test/common/bcd_helpers_test.cc
+srslte/common/bcd_helpers.h
+/home/sugi/srsLTE/lib/test/common/srslte/common/bcd_helpers.h
+assert.h
+-
+
+/usr/local/include/srslte/common/bcd_helpers.h
+ctype.h
+-
+stdint.h
+-
+string
+-
+
