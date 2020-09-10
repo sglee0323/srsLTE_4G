@@ -1435,6 +1435,47 @@ int parse_sib13(std::string filename, sib_type13_r9_s* data)
   return parser::parse_section(std::move(filename), &sib13);
 }
 
+//sglee~
+int parse_sib12(std::string filename, sib_type12_r9_s* data)
+{
+  parser::section sib12("sib12");
+
+  bool        warning_enabled, coding_enabled;
+  std::string warning_msg_segment;
+  std::string data_coding_scheme;
+
+  sib12.add_field(make_asn1_bitstring_number_parser("msg_id_r9", &data->msg_id_r9));
+  sib12.add_field(make_asn1_bitstring_number_parser("serial_num_r9", &data->serial_num_r9));
+  
+  parser::section warning_msg_segment_type("warning_msg_segment_type");
+  sib12.add_subsection(&warning_msg_segment_type);
+  warning_msg_segment_type.add_field(
+    make_asn1_enum_str_parser("warning_msg_segment_type_r9", &data->warning_msg_segment_type_r9));
+  
+  sib12.add_field(new parser::field<std::string>("warning_msg_segment_r9", &warning_msg_segment, &warning_enabled));
+  sib12.add_field(new parser::field<std::string>("data_coding_scheme_r9", &data_coding_scheme, &coding_enabled));
+
+  if (!parser::parse_section(filename, &sib12)) {
+    if(warning_enabled) {
+      data->warning_msg_segment_r9.resize(SRSLTE_MIN((uint32_t)warning_msg_segment.size(), 48));
+      memcpy(data->warning_msg_segment_r9.data(), warning_msg_segment.c_str(), data->warning_msg_segment_r9.size());
+    }
+    if(coding_enabled) {
+	    if(data_coding_scheme.size() > 48) {
+		    data_coding_scheme.resize(48);
+	    }
+           data->data_coding_scheme_r9.from_string(data_coding_scheme);
+    }
+    std::cout << "warning_msg_segment_r9: " << warning_msg_segment << std::endl;
+    std::cout << "data_coding_scheme_r9: " << data_coding_scheme << std::endl;
+    return 0;
+  } else {
+    return -1;
+  }
+}
+//~sglee
+
+
 int parse_sibs(all_args_t* args_, rrc_cfg_t* rrc_cfg_, srsenb::phy_cfg_t* phy_config_common)
 {
   // TODO: Leave 0 blank for now
@@ -1444,6 +1485,9 @@ int parse_sibs(all_args_t* args_, rrc_cfg_t* rrc_cfg_, srsenb::phy_cfg_t* phy_co
   sib_type7_s*     sib7  = &rrc_cfg_->sibs[6].set_sib7();
   sib_type9_s*     sib9  = &rrc_cfg_->sibs[8].set_sib9();
   sib_type13_r9_s* sib13 = &rrc_cfg_->sibs[12].set_sib13_v920();
+  //sglee~
+  sib_type12_r9_s* sib12 = &rrc_cfg_->sibs[11].set_sib12_v920();
+  //~sglee
 
   sib_type1_s* sib1 = &rrc_cfg_->sib1;
   if (sib_sections::parse_sib1(args_->enb_files.sib_config, sib1) != SRSLTE_SUCCESS) {
@@ -1529,6 +1573,14 @@ int parse_sibs(all_args_t* args_, rrc_cfg_t* rrc_cfg_, srsenb::phy_cfg_t* phy_co
       return SRSLTE_ERROR;
     }
   }
+
+  //sglee~
+  if (sib_is_present(sib1->sched_info_list, sib_type_e::sib_type12_v920)) {
+    if (sib_sections::parse_sib12(args_->enb_files.sib_config, sib12) != SRSLTE_SUCCESS) {
+      return SRSLTE_ERROR;
+    }
+  }
+  //sglee~
 
   // Copy PHY common configuration
   phy_config_common->prach_cnfg  = sib2->rr_cfg_common.prach_cfg;
