@@ -115,7 +115,6 @@ bool nas::handle_attach_request(uint32_t                enb_ue_s1ap_id,
     nas_log->error("Unhandled Mobile Id type in attach request\n");
     return false;
   }
-
   // Log Attach Request Information
   nas_log->console("Attach request -- eNB-UE S1AP Id: %d\n", enb_ue_s1ap_id);
   nas_log->info("Attach request -- eNB-UE S1AP Id: %d\n", enb_ue_s1ap_id);
@@ -194,6 +193,8 @@ bool nas::handle_attach_request(uint32_t                enb_ue_s1ap_id,
       return false;
     }
   }
+
+
   return true;
 }
 

@@ -173,6 +173,7 @@ void mme::run_thread()
         pdu->N_bytes = recvfrom(s11, pdu->msg, SRSLTE_MAX_BUFFER_SIZE_BYTES, 0, NULL, NULL);
         m_mme_gtpc->handle_s11_pdu(pdu);
       }
+
       // Handle NAS Timers
       for (std::vector<mme_timer_t>::iterator it = timers.begin(); it != timers.end();) {
         if (FD_ISSET(it->fd, &m_set)) {

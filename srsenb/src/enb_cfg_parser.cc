@@ -1535,6 +1535,7 @@ int parse_sibs(all_args_t* args_, rrc_cfg_t* rrc_cfg_, srsenb::phy_cfg_t* phy_co
   } else {
     // verify SIB13 is available
     if (not sib_is_present(sib1->sched_info_list, sib_type_e::sib_type13_v920)) {
+      std::cout<<"SIB 13 is present\n"<<std::endl;
       fprintf(stderr, "SIB13 not present in sched_info.\n");
       return -1;
     }
@@ -1545,6 +1546,7 @@ int parse_sibs(all_args_t* args_, rrc_cfg_t* rrc_cfg_, srsenb::phy_cfg_t* phy_co
     if (sib_sections::parse_sib3(args_->enb_files.sib_config, sib3) != SRSLTE_SUCCESS) {
       return SRSLTE_ERROR;
     }
+      std::cout<<"SIB 3 is present\n"<<std::endl;
   }
 
   // Generate SIB4 if defined in mapping info
@@ -1579,6 +1581,7 @@ int parse_sibs(all_args_t* args_, rrc_cfg_t* rrc_cfg_, srsenb::phy_cfg_t* phy_co
     if (sib_sections::parse_sib12(args_->enb_files.sib_config, sib12) != SRSLTE_SUCCESS) {
       return SRSLTE_ERROR;
     }
+      std::cout<<"SIB 12 is present\n"<<std::endl;
   }
   //sglee~
 
